@@ -3,7 +3,7 @@ require 'delayed_dragonfly/version'
 
 Gem::Specification.new do |s|
   s.name        = 'delayed_dragonfly'
-  s.version     = DelayedPaperclip::VERSION
+  s.version     = DelayedDragonfly::VERSION
 
   s.authors     = ['Sachin87']
   s.summary     = 'Asynchronously save Dragonfly attachments.'
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['sachin.y87@gmail.com']
   s.homepage    = 'https://github.com/sachin87/delayed_dragonfly'
 
-  s.add_dependency 'paperclip', [">= 3.3"]
+  s.add_dependency 'dragonfly'
 
   s.add_development_dependency 'mocha'
   s.add_development_dependency "rspec"
