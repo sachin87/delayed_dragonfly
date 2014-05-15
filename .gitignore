@@ -1,0 +1,9 @@
+.idea
+tmp/
+.DS_Store
+*.log
+pkg/
+public/
+Gemfile.lock
+*.gem
+./gemfiles/rails*.lock
