@@ -5,12 +5,12 @@ module DelayedDragonfly
     class Resque
       @queue = :dragonfly
 
-      def self.enqueue_upload(instance_klass, instance_id, upload_name)
-        ::Resque.enqueue(self, instance_klass, instance_id, upload_name)
+      def self.enqueue_upload(object, method_name)
+        ::Resque.enqueue(self, object, method_name)
       end
 
-      def self.perform(instance_klass, instance_id, upload_name)
-        DelayedDragonfly.process_job(instance_klass, instance_id, upload_name)
+      def self.perform(object, method_name)
+        DelayedDragonfly.process_job(object, method_name)
       end
     end
   end

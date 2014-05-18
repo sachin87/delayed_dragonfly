@@ -2,18 +2,14 @@ require 'delayed_job'
 
 module DelayedDragonfly
   module Jobs
-    class DelayedJob < Struct.new(:instance_klass, :instance_id, :upload_name)
+    class DelayedJob < Struct.new(:object, :method_name)
 
-        def self.enqueue_delayed_paperclip(instance_klass, instance_id, upload_name)
-          ::Delayed::Job.enqueue(
-            new(instance_klass, instance_id, upload_name),
-            instance_klass.constantize.paperclip_definitions[upload_name][:delayed][:priority].to_i,
-            instance_klass.constantize.paperclip_definitions[upload_name][:delayed][:queue]
-          )
+        def self.enqueue_upload(object, method_name)
+          ::Delayed::Job.enqueue(object, method_name)
         end
 
       def perform
-        DelayedDragonfly.process_job(instance_klass, instance_id, upload_name)
+        DelayedDragonfly.process_job(object, method_name)
       end
     end
   end
